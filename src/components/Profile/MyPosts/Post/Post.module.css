@@ -1,0 +1,9 @@
+.item {
+	flex: 1 1 25%;
+	color: black;
+}
+.item img {
+	display: block;
+	width: 100px;
+	height: 100px;
+}

@@ -10,22 +10,11 @@
 	width: 100%;
 }
 
-.header {
-	grid-area: header;
-	background-color: black;
-}
-.nav {
-	grid-area: nav;
-	background-color: gray;
-}
 .content {
 	grid-area: main-content;
 	min-height: 100vh;
 	background-color: lightgray;
 }
-.content img {
-	display: block;
-	width: 100%;
-	height: auto;
-}
+
+
 
