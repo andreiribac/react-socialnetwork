@@ -3,3 +3,6 @@
 	justify-content: center;
 	flex-wrap: wrap;
 }
+.postsBlock {
+	padding: 10px;
+}

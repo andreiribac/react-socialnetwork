@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './News.modules.css';
+// import style from './News.modules.css';
 
 function News(props) {
 	return (
