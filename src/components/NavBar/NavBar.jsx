@@ -21,6 +21,12 @@ function NavBar() {
 				<li className={style.item}>
 					<NavLink className={style.link} activeClassName={style.active} to="/settings">Settings</NavLink>
 				</li>
+				<li className={style.item}>
+					{/* <NavLink className={style.link} activeClassName={style.active} to="/friends">Friends</NavLink> */}
+					<div>
+						<img src="https://casinos-landing.s3-eu-west-1.amazonaws.com/zigzag777/_main_img/__21/birthday-21/ZigZag777_widget_Birthday5.png" alt="" />
+					</div>
+				</li>
 			</ul>
 		</nav>
 	);

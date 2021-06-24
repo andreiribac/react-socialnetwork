@@ -1,12 +1,18 @@
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPosts from './MyPosts/MyPosts';
+// import { addPost } from '../../redux/state';
 
 
-function Profile() {
+
+function Profile(props) {
+	
 	return (
 		<>
 			<ProfileInfo />
-			<MyPosts />
+			<MyPosts
+				postsData={props.postsData}
+				addPost={props.addPost}
+			/>
 		</>
 	);
 }

@@ -8,22 +8,40 @@ import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import { addPost } from './redux/state';
 
 
-function App() {
+function App(props) {
+
   return (
     <Router>
       <div className="app-wrapper">
         <Header />
         <NavBar />
         <section className="content">
-          <Route path='/profile' component={Profile} />
-          <Route path='/dialogs' component={Dialogs} />
-          <Route path='/news' component={News} />
-          <Route path='/music' component={Music} />
-          <Route path='/settings' component={Settings} />
+          <Route path='/profile'
+            render={() => {
+              return (
+                <Profile
+                  postsData={props.state.profilePage.postsData}
+                  addPost={props.addPost}
+                />
+              )
+            }} />
+          <Route path='/dialogs'
+            render={() => {
+              return (
+                <Dialogs
+                  dialogsData={props.state.mesasgePage.dialogsData}
+                  messageData={props.state.mesasgePage.messageData}
+                />
+              )
+            }} />
+          <Route path='/news' render={() => { return (<News />) }} />
+          <Route path='/music' render={() => { return (<Music />) }} />
+          <Route path='/settings' render={() => { return (<Settings />) }} />
+          {/* <Route path='/settings' component={Profile} /> */}
           {/* <Profile /> */}
-          {/* <Dialogs /> */}
         </section>
       </div>
     </Router>
