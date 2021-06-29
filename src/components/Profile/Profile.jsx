@@ -5,13 +5,15 @@ import MyPosts from './MyPosts/MyPosts';
 
 
 function Profile(props) {
-	
 	return (
 		<>
 			<ProfileInfo />
 			<MyPosts
+				dispatch={props.dispatch}
 				postsData={props.postsData}
-				addPost={props.addPost}
+				/* addPost={props.addPost} */
+				/* newPostText={props.newPostText} */
+				updateNewPostText={props.updateNewPostText}
 			/>
 		</>
 	);

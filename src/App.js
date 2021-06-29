@@ -8,11 +8,11 @@ import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import { addPost } from './redux/state';
+import { addPost, updateNewPostText } from './redux/state';
 
 
 function App(props) {
-
+  
   return (
     <Router>
       <div className="app-wrapper">
@@ -23,8 +23,11 @@ function App(props) {
             render={() => {
               return (
                 <Profile
+                  dispatch={props.dispatch}
                   postsData={props.state.profilePage.postsData}
-                  addPost={props.addPost}
+                  /* addPost={props.addPost} */
+                  newPostText={props.state.profilePage.newPostText}
+                /* updateNewPostText={props.updateNewPostText} */
                 />
               )
             }} />
