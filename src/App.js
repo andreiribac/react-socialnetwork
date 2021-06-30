@@ -4,11 +4,12 @@ import { BrowserRouter as Router, Route, } from 'react-router-dom';
 import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
+// import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import { addPost, updateNewPostText } from './redux/state';
+import { addPost, updateNewPostText } from './redux/store';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 
 function App(props) {
@@ -23,10 +24,11 @@ function App(props) {
             render={() => {
               return (
                 <Profile
-                  dispatch={props.dispatch}
-                  postsData={props.state.profilePage.postsData}
+                  store={props.store}
+                 /*  dispatch={props.dispatch} */
+                  /* postsData={props.state.profilePage.postsData} */
                   /* addPost={props.addPost} */
-                  newPostText={props.state.profilePage.newPostText}
+                  /* newPostText={props.state.profilePage.newPostText} */
                 /* updateNewPostText={props.updateNewPostText} */
                 />
               )
@@ -34,11 +36,11 @@ function App(props) {
           <Route path='/dialogs'
             render={() => {
               return (
-                <Dialogs
+                <DialogsContainer
                   store={props.store}
-                  dispatch={props.dispatch}
-                  dialogsData={props.state.mesasgePage.dialogsData}
-                  messageData={props.state.mesasgePage.messageData}
+                 /*  dispatch={props.dispatch} */
+                  /* dialogsData={props.state.mesasgePage.dialogsData} */
+                  /* messageData={props.state.mesasgePage.messageData} */
                 />
               )
             }} />

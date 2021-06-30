@@ -7,8 +7,9 @@ import { addPostActionCreator, updateNewPostActionCreator } from '../../../redux
 
 
 function MyPosts(props) {
+	console.log('props: ', props);
 
-	let posts = props.postsData.map((el) => {
+	let posts = props.posts.map((el) => {
 		return (
 			<Post message={el.message} count={el.count} id={el.id} />
 		);
@@ -16,17 +17,14 @@ function MyPosts(props) {
 
 	let newPostElement = React.createRef();
 
-	let addPost = () => {
-		let text = newPostElement.current.value;
-		// props.addPost(text);
-		// props.updateNewPostText('');
-		props.dispatch(addPostActionCreator());
-		// props.dispatch({ type: 'UPDATE-NEW-POST-TEXT'});
+	let onAddPost = () => {
+		props.onAddPost();
+		// props.dispatch(addPostActionCreator());
 	};
 	let onPostChange = () => {
 		let text = newPostElement.current.value;
-		// props.updateNewPostText(text);
-		props.dispatch(updateNewPostActionCreator(text));
+		props.updateNewPostActionCreator(text);
+		
 	};
 
 	return (
@@ -43,7 +41,7 @@ function MyPosts(props) {
 						rows="4"
 						value={props.newPostText} />
 				</div>
-				<div><button onClick={addPost}>Add post</button></div>
+				<div><button onClick={onAddPost}>Add post</button></div>
 			</div>
 			<div className={style.posts}>
 				{posts}
