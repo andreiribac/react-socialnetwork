@@ -1,3 +1,7 @@
+import profileReducer from './profile-reducer';
+import dialogsReducer from './dialogs-reducer';
+import sidebarReducer from './sidebar-reducer';
+
 let store = {
 	_state: {
 		profilePage: {
@@ -28,6 +32,7 @@ let store = {
 				{ id: 5, message: 'Cool', },
 				{ id: 6, message: 'Good Day', },
 			],
+			newMessageBody: "",
 		},
 		sidebar: {
 			friends: [
@@ -41,7 +46,7 @@ let store = {
 		},
 	},
 	_callSubscriber() {
-		
+
 	},
 
 	getState() {
@@ -57,10 +62,10 @@ let store = {
 			message: this._state.profilePage.newPostText,
 			count: 0,
 		};
-		
-		// this._state.profilePage.postsData.push(newPost);
-		this._state.profilePage.postsData = [...this._state.profilePage.postsData, newPost];
-		
+
+		this._state.profilePage.postsData.push(newPost);
+		// this._state.profilePage.postsData = [...this._state.profilePage.postsData, newPost];
+
 		this._state.profilePage.postsData.newPostText = '';
 		this._callSubscriber(this._state);
 	},
@@ -69,16 +74,32 @@ let store = {
 		this._callSubscriber(this._state);
 	},
 	dispatch(action) {
-		
-		if (action.type === 'ADD-POST') {
-			
+
+		this._state.profilePage = profileReducer(this._state.profilePage, action);
+		this._state.mesasgePage = dialogsReducer(this._state.mesasgePage, action);
+		this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+		this._callSubscriber(this._state);
+
+		/* if (action.type === 'ADD-POST') {
 			this._addPost();
 		} else if (action.type === 'UPDATE-NEW-POST-TEXT') {
 			this._updateNewPostText(action.newText);
-		}
+		} else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+			this._state.mesasgePage.newMessageBody = action.body;
+			this._callSubscriber(this._state);
+		} else if (action.type === SEND_MESSAGE) {
+			let body = this._state.mesasgePage.newMessageBody;
+			this._state.mesasgePage.newMessageBody = '';
+			this._state.mesasgePage.messageData.push({id: 7, message: body});
+			this._callSubscriber(this._state);
+		} */
 	}
 
 };
+
+
+
 
 export default store;
 window.store = store;

@@ -35,6 +35,8 @@ function App(props) {
             render={() => {
               return (
                 <Dialogs
+                  store={props.store}
+                  dispatch={props.dispatch}
                   dialogsData={props.state.mesasgePage.dialogsData}
                   messageData={props.state.mesasgePage.messageData}
                 />
