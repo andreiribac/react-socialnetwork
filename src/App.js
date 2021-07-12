@@ -8,12 +8,12 @@ import Profile from './components/Profile/Profile';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import { addPost, updateNewPostText } from './redux/store';
+// import { addPost, updateNewPostText } from './redux/store';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 
 function App(props) {
-  
+
   return (
     <Router>
       <div className="app-wrapper">
@@ -24,11 +24,11 @@ function App(props) {
             render={() => {
               return (
                 <Profile
-                  store={props.store}
-                 /*  dispatch={props.dispatch} */
-                  /* postsData={props.state.profilePage.postsData} */
-                  /* addPost={props.addPost} */
-                  /* newPostText={props.state.profilePage.newPostText} */
+                /* store={props.store} */
+                /*  dispatch={props.dispatch} */
+                /* postsData={props.state.profilePage.postsData} */
+                /* addPost={props.addPost} */
+                /* newPostText={props.state.profilePage.newPostText} */
                 /* updateNewPostText={props.updateNewPostText} */
                 />
               )
@@ -37,10 +37,10 @@ function App(props) {
             render={() => {
               return (
                 <DialogsContainer
-                  store={props.store}
-                 /*  dispatch={props.dispatch} */
-                  /* dialogsData={props.state.mesasgePage.dialogsData} */
-                  /* messageData={props.state.mesasgePage.messageData} */
+                /* store={props.store} */
+                /*  dispatch={props.dispatch} */
+                /* dialogsData={props.state.mesasgePage.dialogsData} */
+                /* messageData={props.state.mesasgePage.messageData} */
                 />
               )
             }} />

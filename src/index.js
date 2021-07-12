@@ -6,18 +6,21 @@ import store from './redux/redux-store';
 // import { addPost, updateNewPostText, subscribe } from './redux/state';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from './StoreContext';
 
 function callSubscriber(state) {
-	
+
 	ReactDOM.render(
 		<React.StrictMode>
-			<App
-				state={store.getState()}
-				dispatch={store.dispatch.bind(store)}
-				store={store}
+			<Provider store={store}>
+				<App
+				/* state={store.getState()} */
+				/* dispatch={store.dispatch.bind(store)} */
+				/* store={store} */
 				/* addPost={store.addPost.bind(store)} */
 				/* updateNewPostText={store.updateNewPostText.bind(store)} */
-			/>
+				/>
+			</Provider>
 		</React.StrictMode>,
 		document.getElementById('root')
 	);
