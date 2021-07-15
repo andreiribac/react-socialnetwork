@@ -10,15 +10,7 @@ function Profile(props) {
 	return (
 		<>
 			<ProfileInfo />
-			<MyPostsContainer
-				/* store={props.store} */
-				/* posts={props.profilePage.postsData} */
-				/* dispatch={props.dispatch} */
-				/* postsData={props.postsData} */
-				/* addPost={props.addPost} */
-				/* newPostText={props.newPostText} */
-				// updateNewPostText={props.updateNewPostText}
-			/>
+			<MyPostsContainer/>
 		</>
 	);
 }
