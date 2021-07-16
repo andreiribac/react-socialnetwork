@@ -19,6 +19,9 @@ function NavBar() {
 					<NavLink className={style.link} activeClassName={style.active} to="/music">Music</NavLink>
 				</li>
 				<li className={style.item}>
+					<NavLink className={style.link} activeClassName={style.active} to="/users">Users</NavLink>
+				</li>
+				<li className={style.item}>
 					<NavLink className={style.link} activeClassName={style.active} to="/settings">Settings</NavLink>
 				</li>
 				<li className={style.item}>

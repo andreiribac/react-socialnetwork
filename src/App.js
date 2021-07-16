@@ -10,6 +10,7 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 // import { addPost, updateNewPostText } from './redux/store';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 
 function App(props) {
@@ -20,32 +21,11 @@ function App(props) {
         <Header />
         <NavBar />
         <section className="content">
-          <Route path='/profile'
-            render={() => {
-              return (
-                <Profile
-                /* store={props.store} */
-                /*  dispatch={props.dispatch} */
-                /* postsData={props.state.profilePage.postsData} */
-                /* addPost={props.addPost} */
-                /* newPostText={props.state.profilePage.newPostText} */
-                /* updateNewPostText={props.updateNewPostText} */
-                />
-              )
-            }} />
-          <Route path='/dialogs'
-            render={() => {
-              return (
-                <DialogsContainer
-                /* store={props.store} */
-                /*  dispatch={props.dispatch} */
-                /* dialogsData={props.state.mesasgePage.dialogsData} */
-                /* messageData={props.state.mesasgePage.messageData} */
-                />
-              )
-            }} />
+          <Route path='/profile'render={() => {return (<Profile/>)}} />
+          <Route path='/dialogs'render={() => {return (<DialogsContainer/>)}} />
           <Route path='/news' render={() => { return (<News />) }} />
           <Route path='/music' render={() => { return (<Music />) }} />
+          <Route path='/users' render={() => { return (<UsersContainer />) }} />
           <Route path='/settings' render={() => { return (<Settings />) }} />
           {/* <Route path='/settings' component={Profile} /> */}
           {/* <Profile /> */}
