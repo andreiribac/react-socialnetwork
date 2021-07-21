@@ -1,17 +1,14 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 let initialState = {
-	users: [
-		// { id: 1, photoUrl: 'https://casinos-landing.s3-eu-west-1.amazonaws.com/zigzag777/_main_img/__21/birthday-21/ZigZag777_widget_Birthday5.png', followed: false, fullName: 'Andrei', status: 'I am a boss', location: { city: 'Chisinau', country: 'Moldova' }, },
-		// { id: 2, photoUrl: 'https://casinos-landing.s3-eu-west-1.amazonaws.com/zigzag777/_main_img/__21/birthday-21/ZigZag777_widget_Birthday5.png', followed: false, fullName: 'Iana', status: 'I am a boss too', location: { city: 'Moscow', country: 'Russia' }, }, ,
-		// { id: 3, photoUrl: 'https://casinos-landing.s3-eu-west-1.amazonaws.com/zigzag777/_main_img/__21/birthday-21/ZigZag777_widget_Birthday5.png', followed: true, fullName: 'Katea', status: 'I am a boss too', location: { city: 'Kiev', country: 'Ukraine' }, },
-		// { id: 4, photoUrl: 'https://casinos-landing.s3-eu-west-1.amazonaws.com/zigzag777/_main_img/__21/birthday-21/ZigZag777_widget_Birthday5.png', followed: false, fullName: 'Andrei', status: 'I am a boss', location: { city: 'Chisinau', country: 'Moldova' }, },
-		// { id: 5, photoUrl: 'https://casinos-landing.s3-eu-west-1.amazonaws.com/zigzag777/_main_img/__21/birthday-21/ZigZag777_widget_Birthday5.png', followed: false, fullName: 'Andrei', status: 'I am a boss', location: { city: 'Chisinau', country: 'Moldova' }, },
-		// { id: 6, photoUrl: 'https://casinos-landing.s3-eu-west-1.amazonaws.com/zigzag777/_main_img/__21/birthday-21/ZigZag777_widget_Birthday5.png', followed: false, fullName: 'Andrei', status: 'I am a boss', location: { city: 'Chisinau', country: 'Moldova' }, },
-	
-	]
+	users: [],
+	pageSize: 20,
+	totalUsersCount: 0,
+	currentPage: 1,
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -46,7 +43,19 @@ const usersReducer = (state = initialState, action) => {
 		case SET_USERS: {
 			return ({
 				...state,
-				users: [...state.users, ...action.users],
+				users: [...action.users ],
+			});
+		}
+		case SET_CURRENT_PAGE: {
+			return ({
+				...state,
+				currentPage: action.currentPage,
+			});
+		}
+		case SET_TOTAL_USERS_COUNT: {
+			return ({
+				...state,
+				totalUsersCount: action.count,
 			});
 		}
 
@@ -78,6 +87,22 @@ export const setUsersAC = (users) => {
 		{
 			type: SET_USERS,
 			users,
+		}
+	);
+}
+export const setCurrentPageAC = (currentPage) => {
+	return (
+		{
+			type: SET_CURRENT_PAGE,
+			currentPage: currentPage,
+		}
+	);
+}
+export const setTotalUsersCountAC = (totalUsersCount) => {
+	return (
+		{
+			type: SET_TOTAL_USERS_COUNT,
+			count: totalUsersCount,
 		}
 	);
 }
