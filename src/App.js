@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, } from 'react-router-dom';
 import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 // import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
@@ -21,7 +21,7 @@ function App(props) {
         <Header />
         <NavBar />
         <section className="content">
-          <Route path='/profile'render={() => {return (<Profile/>)}} />
+          <Route path='/profile'render={() => {return (<ProfileContainer/>)}} />
           <Route path='/dialogs'render={() => {return (<DialogsContainer/>)}} />
           <Route path='/news' render={() => { return (<News />) }} />
           <Route path='/music' render={() => { return (<Music />) }} />

@@ -9,7 +9,7 @@ import store from '../../redux/store';
 function Profile(props) {
 	return (
 		<>
-			<ProfileInfo />
+			<ProfileInfo profile={ props.profile}/>
 			<MyPostsContainer/>
 		</>
 	);
