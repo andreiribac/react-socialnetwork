@@ -2,3 +2,16 @@
 	grid-area: header;
 	background-color: black;
 }
+.loginBlock {
+	float: right;
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	height: 100%;
+	box-sizing: border-box;
+	color: white;
+}
+.loginBlock a {
+	color: white;
+	text-decoration: none;
+}

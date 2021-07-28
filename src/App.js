@@ -1,16 +1,15 @@
 // import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, } from 'react-router-dom';
-import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
+import { BrowserRouter as Router, Route, } from 'react-router-dom';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
-// import Dialogs from './components/Dialogs/Dialogs';
+import HeaderContainer from './components/Header/HeaderContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-// import { addPost, updateNewPostText } from './redux/store';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import UsersContainer from './components/Users/UsersContainer';
 
 
 function App(props) {
@@ -18,10 +17,11 @@ function App(props) {
   return (
     <Router>
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <NavBar />
         <section className="content">
-          <Route path='/profile'render={() => {return (<ProfileContainer/>)}} />
+          <Route path='/profile/:userId?'
+            render={() => { return (<ProfileContainer />) }} />
           <Route path='/dialogs'render={() => {return (<DialogsContainer/>)}} />
           <Route path='/news' render={() => { return (<News />) }} />
           <Route path='/music' render={() => { return (<Music />) }} />
