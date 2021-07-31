@@ -11,6 +11,8 @@ import {
 import Users from './Users';
 import Prealoder from "../common/Preloader/Prealoder";
 import { usersAPI } from '../../api/api';
+import { compose } from "redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 
 class UsersAPIComponent extends React.Component {
@@ -87,38 +89,22 @@ let mapStateToProps = (state) => {
 	)
 };
 
-/* let mapDispatchToProps = (dispatch) => {
-	return (
-		{
-			follow: (userID) => {
-				dispatch(followAC(userID))
-			},
-			unfollow: (userID) => {
-				dispatch(unfollowAC(userID))
-			},
-			setUsers: (users) => {
-				dispatch(setUsersAC(users))
-			},
-			setCurrentPage: (pageNumber) => {
-				dispatch(setCurrentPageAC(pageNumber))
-			},
-			setTotalUsersCount: (totalCount) => {
-				dispatch(setTotalUsersCountAC(totalCount))
-			},
-			toggleIsFetching: (isFetching) => {
-				dispatch(toggleIsFetchingAC(isFetching))
-			}
-		}
-	)
-} */
+// export default connect(mapStateToProps, {
+// 	follow,
+// 	unfollow,
+// 	setCurrentPage,
+// 	toggleFollowingProgress,
+// 	getUsers,
+// })(UsersAPIComponent);
 
-export default connect(mapStateToProps, {
-	follow,
-	unfollow,
-	// setUsers,
-	setCurrentPage,
-	// setTotalUsersCount,
-	// toggleIsFetching,
-	toggleFollowingProgress,
-	getUsers,
-})(UsersAPIComponent);
+export default compose(
+	withAuthRedirect,
+	connect(mapStateToProps, {
+		follow,
+		unfollow,
+		setCurrentPage,
+		toggleFollowingProgress,
+		getUsers,
+	}),
+
+)(UsersAPIComponent)
