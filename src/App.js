@@ -10,6 +10,8 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import Login from './components/Login/Login';
+
 
 
 function App(props) {
@@ -27,6 +29,7 @@ function App(props) {
           <Route path='/music' render={() => { return (<Music />) }} />
           <Route path='/users' render={() => { return (<UsersContainer />) }} />
           <Route path='/settings' render={() => { return (<Settings />) }} />
+          <Route path='/login' render={() => { return (<Login />) }} />
           {/* <Route path='/settings' component={Profile} /> */}
           {/* <Profile /> */}
         </section>
