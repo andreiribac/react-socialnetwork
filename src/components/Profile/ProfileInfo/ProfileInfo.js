@@ -15,7 +15,7 @@ function ProfileInfo(props) {
 				<img src={props.profile.photos.large} alt="" />
 				<div>{props.profile.fullName}</div>
 				<div>{props.profile.aboutMe}</div>
-				<ProfileStatus status={"all good"} />
+				<ProfileStatus status={props.status} updateStatus={props.updateStatus} />
 			</div>
 		</>
 	);
