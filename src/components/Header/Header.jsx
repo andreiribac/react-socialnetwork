@@ -8,7 +8,7 @@ function Header(props) {
 			<img src="https://casinos-landing.s3-eu-west-1.amazonaws.com/_zigzag777/css/img/logo.svg" alt="" />
 			<div className={style.loginBlock}>
 				{props.isAuth
-					? props.login
+					? <div>{props.login} - <button onClick={props.logout}>Log out</button> </div>
 					: <NavLink to={'/login'}>Login</NavLink>
 				}
 				

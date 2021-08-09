@@ -43,13 +43,12 @@ export const profileAPI = {
 export const authAPI = {
 	me() {
 		return instance.get(`auth/me`);
-	}
+	},
+	login(email, password, rememberMe = false) {
+		return instance.post(`auth/login`, { email, password, rememberMe });
+	},
+	logout() {
+		return instance.delete(`auth/login`);
+	},
 }
-
-// export const getUsers = (pageNumber = 1, pageSize = 35) => {
-// 		return (
-// 			instance.get(`users?page=${pageNumber}&count=${pageSize}`)
-// 				.then(response => { return response.data })
-// 		)
-// 	}
 
