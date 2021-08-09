@@ -10,3 +10,9 @@
 	visibility: visible; */
 	color: red;
 }
+
+.formSummaryError {
+	padding: 5px;
+	color: red;
+	border: 2px solid red;
+}
