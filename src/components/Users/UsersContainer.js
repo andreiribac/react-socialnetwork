@@ -1,5 +1,4 @@
 import React from "react";
-import * as axios from "axios";
 import { connect } from 'react-redux';
 import {
 	follow,
@@ -10,7 +9,6 @@ import {
 } from '../../redux/users-reducer';
 import Users from './Users';
 import Prealoder from "../common/Preloader/Prealoder";
-import { usersAPI } from '../../api/api';
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
@@ -98,7 +96,7 @@ let mapStateToProps = (state) => {
 // })(UsersAPIComponent);
 
 export default compose(
-	withAuthRedirect,
+	// withAuthRedirect,
 	connect(mapStateToProps, {
 		follow,
 		unfollow,

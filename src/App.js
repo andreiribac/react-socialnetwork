@@ -1,8 +1,8 @@
 // import logo from './logo.svg';
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
-import { BrowserRouter as Router, Route, } from 'react-router-dom';
+import { Route, withRouter, } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -11,58 +11,65 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import Login from './components/Login/Login';
+import { connect } from 'react-redux';
+import { initializeApp } from './redux/app-reducer';
+import { compose } from 'redux';
+import Preloader from "./components/common/Preloader/Prealoder";
 
 
 
-function App(props) {
+class App extends Component {
+	constructor(props) {
+		super(props);
+	}
 
-  return (
-    <Router>
-      <div className="app-wrapper">
-        <HeaderContainer />
-        <NavBar />
-        <section className="content">
-          <Route path='/profile/:userId?'
-            render={() => { return (<ProfileContainer />) }} />
-          <Route path='/dialogs'render={() => {return (<DialogsContainer/>)}} />
-          <Route path='/news' render={() => { return (<News />) }} />
-          <Route path='/music' render={() => { return (<Music />) }} />
-          <Route path='/users' render={() => { return (<UsersContainer />) }} />
-          <Route path='/settings' render={() => { return (<Settings />) }} />
-          <Route path='/login' render={() => { return (<Login />) }} />
-          {/* <Route path='/settings' component={Profile} /> */}
-          {/* <Profile /> */}
-        </section>
-      </div>
-    </Router>
-  );
+	componentDidMount() {
+		this.props.initializeApp();
+	}
+
+	render() {
+		if (!this.props.initialized) {
+			return <Preloader />
+		}
+
+		return (
+			<div className="app-wrapper">
+				<HeaderContainer />
+				<NavBar />
+				<section className="content">
+					<Route path='/profile/:userId?' render={() => {
+						return <ProfileContainer />;
+					}} />
+					<Route path='/dialogs' render={() => {
+						return <DialogsContainer />;
+					}} />
+					<Route path='/news' render={() => {
+						return <News />;
+					}} />
+					<Route path='/music' render={() => {
+						return <Music />;
+					}} />
+					<Route path='/users' render={() => {
+						return <UsersContainer />;
+					}} />
+					<Route path='/settings' render={() => {
+						return <Settings />;
+					}} />
+					<Route path='/login' render={() => {
+						return <Login />;
+					}} />
+				</section>
+			</div>
+		);
+	}
+
 }
 
+const mapStateToProps = (state) => ({
+	initialized: state.app.initialized
+});
 
 
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Изучаю реакт
-//         </p>
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-export default App;
+export default compose(
+	withRouter,
+	connect(mapStateToProps, { initializeApp }))(App);
