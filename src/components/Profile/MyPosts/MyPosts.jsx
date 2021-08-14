@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import style from './MyPosts.module.css'
 import Post from './Post/Post';
 import { Field, reduxForm } from 'redux-form'
@@ -24,29 +24,24 @@ let AddNewPostForm = (props) => {
 
 let AddNewPostFormRedux = reduxForm({ form: "ProfileAddNewPostForm" })(AddNewPostForm);
 
-function MyPosts(props) {
-	let postsElements = props.posts.map((el) => {
-		return (
-			<Post message={el.message} count={el.count} id={el.id} />
-		);
-	});
+const MyPosts = React.memo( props => {
+  console.log('render');
+  let postsElements = props.posts.map(el => {
+    return <Post message={el.message} count={el.count} id={el.id} />;
+  });
 
-	let newPostElement = React.createRef();
+  let onAddPost = values => {
+    props.addPost(values.newPostText);
+  };
 
-	let onAddPost = (values) => {
-		props.addPost(values.newPostText);
-	}
-
-	return (
-		<div className={style.postsBlock}>
+  return <div className={style.postsBlock}>
 			<h3>My posts</h3>
 			<AddNewPostFormRedux onSubmit={onAddPost} />
 			<div className={style.posts}>
 				{postsElements}
 			</div>
-		</div>
-	);
-}
+		</div>;
+});
 
 
 
