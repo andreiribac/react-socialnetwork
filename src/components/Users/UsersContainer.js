@@ -10,7 +10,6 @@ import {
 import Users from './Users';
 import Prealoder from "../common/Preloader/Prealoder";
 import { compose } from "redux";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import {
     getPageSize,
     getTotalUsersCount,
@@ -18,7 +17,6 @@ import {
     getIsFetching,
     getFollowingInProgress,
     getUsers,
-    // getUserSuperSelector
 } from '../../redux/users-selectors';
 
 
@@ -51,11 +49,15 @@ class UsersAPIComponent extends React.Component {
 		/* Все это меняется когда мы сделали thunk - функцию */
 		// this.props.getUsers();
 		// даже ту сокращенную запись мы меняем на нижнюю
-		this.props.getUsers(this.props.setCurrentPage, this.props.pageSize);
+		// this.props.getUsers(this.props.setCurrentPage, this.props.pageSize);
+		const { currentPage, pageSize } = this.props;
+		this.props.getUsers(currentPage, pageSize);
 	}
 
 	onPageChanged = (pageNumber) => {
-		this.props.getUsers(pageNumber, this.props.pageSize);
+		// this.props.getUsers(pageNumber, this.props.pageSize);
+		const { pageSize } = this.props;
+		this.props.getUsers(pageNumber, pageSize);
 	}
 
 	render() {
@@ -75,7 +77,6 @@ class UsersAPIComponent extends React.Component {
 					users={this.props.users}
 					follow={this.props.follow}
 					unfollow={this.props.unfollow}
-					// toggleFollowingProgress={this.props.toggleFollowingProgress}
 					followingInProgress={this.props.followingInProgress}
 				/>
 			</>
@@ -84,24 +85,11 @@ class UsersAPIComponent extends React.Component {
 }
 
 
-// let mapStateToProps = (state) => {
-// 	return (
-// 		{
-// 			users: state.usersPage.users,
-// 			pageSize: state.usersPage.pageSize,
-// 			totalUsersCount: state.usersPage.totalUsersCount,
-// 			currentPage: state.usersPage.currentPage,
-// 			isFetching: state.usersPage.isFetching,
-// 			followingInProgress: state.usersPage.followingInProgress,
-// 		}
-// 	)
-// };
 let mapStateToProps = (state) => {
 	
 	return (
 		{
 			users: getUsers(state),
-			// users: getUserSuperSelector(state),
 			pageSize: getPageSize(state),
 			totalUsersCount: getTotalUsersCount(state),
 			currentPage: getCurrentPage(state),
