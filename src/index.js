@@ -1,27 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import store from './redux/redux-store';
-// import { addPost, updateNewPostText, subscribe } from './redux/state';
-import { BrowserRouter } from 'react-router-dom';
+import SamuraiJSApp from "./App";
 import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
 
-/*setInterval(() => {
-	store.dispatch({type: "FAKE"})
-}, 1000);*/
-
-ReactDOM.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<Provider store={store}>
-				<App />
-			</Provider>
-		</BrowserRouter>
-	</React.StrictMode>,
-	document.getElementById('root')
-);
+ReactDOM.render(<SamuraiJSApp />, document.getElementById('root'));
 
 // callSubscriber(store.getState());
 // store.subscribe(() => {
