@@ -1,15 +1,15 @@
 // import logo from './logo.svg';
-import React, { Component } from 'react';
+import React, { Component, Suspense, } from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter, Route, withRouter, } from 'react-router-dom';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
+
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import News from './components/News/News';
-import Music from './components/Music/Music';
-import Settings from './components/Settings/Settings';
+
+
+
 import Login from './components/Login/Login';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
@@ -17,6 +17,12 @@ import { compose } from 'redux';
 import Preloader from "./components/common/Preloader/Prealoder";
 import store from './redux/redux-store';
 import { Provider } from 'react-redux';
+
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const News = React.lazy(() => import('./components/News/News'));
+const Music = React.lazy(() => import('./components/Music/Music'));
+const Settings = React.lazy(() => import('./components/Settings/Settings'));
 
 
 
@@ -40,26 +46,22 @@ class App extends Component {
 				<NavBar />
 				<section className="content">
 					<Route path='/profile/:userId?' render={() => {
-						return <ProfileContainer />;
-					}} />
-					<Route path='/dialogs' render={() => {
-						return <DialogsContainer />;
-					}} />
-					<Route path='/news' render={() => {
-						return <News />;
-					}} />
-					<Route path='/music' render={() => {
-						return <Music />;
+						return (
+							<ProfileContainer />
+						)
 					}} />
 					<Route path='/users' render={() => {
 						return <UsersContainer />;
 					}} />
-					<Route path='/settings' render={() => {
-						return <Settings />;
-					}} />
 					<Route path='/login' render={() => {
 						return <Login />;
 					}} />
+					<Suspense fallback={<Preloader />}>
+						<Route path='/dialogs' render={() => {return <DialogsContainer />}} />
+						<Route path='/news' render={() => {return <News />}} />
+						<Route path='/music' render={() => {return <Music />}} />
+						<Route path='/settings' render={() => {return <Settings />}} />
+					</Suspense>
 				</section>
 			</div>
 		);
