@@ -12,6 +12,8 @@ let Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, users, ...
 	}
 	return (
 		<>
+			<Paginator currentPage={currentPage} onPageChanged={onPageChanged}
+				totalItemsCount={totalUsersCount} pageSize={pageSize} />
 			<div className={styles.userContainer}>
 				{
 					users.map((u) => {
@@ -28,8 +30,7 @@ let Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, users, ...
 				}
 			</div>
 
-			<Paginator currentPage={currentPage} onPageChanged={onPageChanged}
-				totalUsersCount={totalUsersCount} pageSize={pageSize} />
+			
 
 		</>
 	)
