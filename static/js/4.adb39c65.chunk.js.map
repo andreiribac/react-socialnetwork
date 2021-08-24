@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/Music/Music.js"],"names":["Music","props"],"mappings":"kIAAA,uBAUeA,UARf,SAAeC,GACd,OACC","file":"static/js/4.adb39c65.chunk.js","sourcesContent":["import React from 'react';\r\n\r\nfunction Music(props) {\r\n\treturn (\r\n\t\t<div>\r\n\t\t\tMusic\r\n\t\t</div>\r\n\t);\r\n}\r\n\r\nexport default Music;"],"sourceRoot":""}

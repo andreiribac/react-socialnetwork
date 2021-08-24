@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/Settings/Settings.js"],"names":["Settings","props"],"mappings":"kIAAA,uBAUeA,UARf,SAAkBC,GACjB,OACC","file":"static/js/6.752c4453.chunk.js","sourcesContent":["import React from 'react';\r\n\r\nfunction Settings(props) {\r\n\treturn (\r\n\t\t<div>\r\n\t\t\tSettings\r\n\t\t</div>\r\n\t);\r\n}\r\n\r\nexport default Settings;"],"sourceRoot":""}
