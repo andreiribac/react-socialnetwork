@@ -3,7 +3,6 @@ import React from "react";
 import styles from './users.module.css';
 import userPhoto from '../../assets/images/tournaments.svg'
 import { NavLink } from "react-router-dom";
-import Paginator from "../common/Paginator/Paginator";
 
 let User = ({ user, followingInProgress, unfollow, follow }) => {
 	

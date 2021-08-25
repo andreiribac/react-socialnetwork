@@ -1,0 +1,25 @@
+
+.pageCountContainer {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 15px auto;
+}
+.pageCountContainer span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 4px;
+	width: 35px;
+	height: 35px;
+	border-radius: 4px;
+	border: 1px solid black;
+	background: white;
+}
+
+.pageCountContainer span.selectedPage {
+	font-size: 1.1em;
+	font-weight: 700;
+	color: white;
+	background: #9933ff;
+}

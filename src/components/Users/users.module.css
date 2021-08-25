@@ -17,10 +17,3 @@
 .textCenter {
 	text-align: center;
 }
-.selectedPage {
-	font-weight: 700;
-}
-.pageCountContainer {
-	display: flex;
-	flex-wrap: wrap;
-}
