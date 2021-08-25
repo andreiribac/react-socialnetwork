@@ -23,8 +23,15 @@ function ProfileInfo({ profile, status, updateStatus, isOwner, savePhoto }) {
 			<div className={style.descriptionBlock}>
 				<img src={profile.photos.large || userPhoto} className={style.descriptionImg} alt="" />
 				{isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
-				<div>{profile.fullName}</div>
-				<div>{profile.aboutMe}</div>
+				<div>
+					<div><b>My name is:</b> {profile.fullName}</div>
+					<div><b>Something about me:</b> {profile.aboutMe}</div>
+					<div><b>Lokink for a job:</b> {profile.lookingForAJob ? "yes" : "no"}</div>
+					{profile.lookingForAJob &&
+						<div><b>My skills:</b> {profile.lookingForAJobDescription}</div>
+					}
+					<div><b>About me:</b> {profile.aboutMe}</div>
+				</div>
 				<ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
 			</div>
 		</>
