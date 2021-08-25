@@ -2,7 +2,7 @@
 import React, { Component, Suspense, } from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
-import { BrowserRouter, Route, withRouter, } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, withRouter, } from 'react-router-dom';
 
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -79,11 +79,15 @@ let AppContainer = compose(
 	connect(mapStateToProps, { initializeApp }))(App);
 
 const SamuraiJSApp = (props) => {
-	return <BrowserRouter>
-		<Provider store={store}>
-			<AppContainer />
-		</Provider>
-	</BrowserRouter>
+	return (
+		// <BrowserRouter basename={process.env.PUBLIC_URL}>
+		<HashRouter>
+			<Provider store={store}>
+				<AppContainer />
+			</Provider>
+		</HashRouter>
+		// </BrowserRouter>
+	)
 }
 
 export default SamuraiJSApp;
